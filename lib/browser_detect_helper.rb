@@ -8,8 +8,7 @@ module BrowserDetectHelper
     return true if browser_name == name
     return true if name == 'mozilla' && browser_name == 'gecko'
     return true if name == 'ie' && browser_name.index('ie')
-    return true if name == 'webkit' && browser_name == 'safari'
-  
+    return true if name == 'webkit' && browser_name == ('safari' or 'chrome' or 'iphone' or 'ipad')
   end
 
   def browser_name
@@ -25,6 +24,12 @@ module BrowserDetectHelper
         'opera'
       elsif ua.index('konqueror') 
         'konqueror'
+      elsif ua.index('ipad') 
+        'ipad'
+      elsif ua.index('iphone') 
+        'iphone'
+      elsif ua.index('chrome/')
+        'chrome'
       elsif ua.index('applewebkit/')
         'safari'
       elsif ua.index('mozilla/')
